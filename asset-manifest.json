@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/apexcharts-brushchart-jpv/static/css/main.e6c13ad2.css",
-    "main.js": "/apexcharts-brushchart-jpv/static/js/main.81f99754.js",
+    "main.js": "/apexcharts-brushchart-jpv/static/js/main.d63bb5e6.js",
     "static/js/787.a4b02bd6.chunk.js": "/apexcharts-brushchart-jpv/static/js/787.a4b02bd6.chunk.js",
     "index.html": "/apexcharts-brushchart-jpv/index.html",
     "main.e6c13ad2.css.map": "/apexcharts-brushchart-jpv/static/css/main.e6c13ad2.css.map",
-    "main.81f99754.js.map": "/apexcharts-brushchart-jpv/static/js/main.81f99754.js.map",
+    "main.d63bb5e6.js.map": "/apexcharts-brushchart-jpv/static/js/main.d63bb5e6.js.map",
     "787.a4b02bd6.chunk.js.map": "/apexcharts-brushchart-jpv/static/js/787.a4b02bd6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.81f99754.js"
+    "static/js/main.d63bb5e6.js"
   ]
 }
