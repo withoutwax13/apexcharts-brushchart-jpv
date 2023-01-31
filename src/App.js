@@ -7,9 +7,17 @@ import Button from '@mui/material/Button';
 
 import Chart from "react-apexcharts";
 
+import Modal from './Modal.js';
 import data from './data.js'
 
 const BrushChart = () => {
+  const [XAxisAnnotList, setXAxisAnnotList] = React.useState([])
+  const [xAxisAnnot, setXAxisAnnot] = React.useState('')
+  const [whichXAxisData, setWhichXAxisData] = React.useState(null)
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   var series = [{
     data: data.map(v=>Number(v['Revenue'].split('$').join('')))
   }]
@@ -53,8 +61,29 @@ const BrushChart = () => {
           }
         }
       ],
+      xaxis: XAxisAnnotList.length === 0 ? [] : XAxisAnnotList.map(el=>{
+        return {
+          x: el.xAxis,
+          borderColor: "#00E396",
+          label: {
+            position: 'bottom',
+            borderColor: "#00E396",
+            style: {
+              color: "#ffe",
+              background: "#00E396"
+            },
+            text: el.text
+          }
+        }
+      })
     },
     chart: {
+      events: {
+        click: function(event, chartContext, config) {
+          setWhichXAxisData(data[config.dataPointIndex]['Date'])
+          handleOpen()
+        }
+      },
       id: 'chart2',
       type: 'line',
       height: 230,
@@ -119,6 +148,9 @@ const BrushChart = () => {
     }
   }
 
+  var modalProps = {
+    open, handleClose, whichXAxisData, setXAxisAnnotList
+  }
   return (
     <div id="wrapper">
       <div id="chart-line2">
@@ -127,6 +159,7 @@ const BrushChart = () => {
       <div id="chart-line">
         <Chart options={optionsLine} series={seriesLine} type="area" height={130} />
       </div>
+      <Modal {...modalProps}/>
     </div>
 )
 }
@@ -140,7 +173,7 @@ export default function App() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               John Patrick Valera
             </Typography>
-            <Button color="inherit">Repository Link</Button>
+            <Button color="inherit" onClick={()=>window.open("https://github.com/withoutwax13/apexcharts-brushchart-jpv", '_blank')}>Repository Link</Button>
           </Toolbar>
         </AppBar>
       </Box>
